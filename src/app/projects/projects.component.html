@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor = "let project of projects" [ngClass]= "(project.status=='Выполнено')?'text-success':''">
+            <tr *ngFor = "let project of projects" [ngClass]= "project.status === 'Выполнено' ? 'text-success':''">
                 <th  (click)="onSelect(project)" routerLink="/info-project" scope="row">{{project.name}}</th>
                 <td>{{project.status}}</td>
                 <td ><button class="btn btn-outline-info" routerLink="/edit-project" (click)="onSelect(project)">Изменить <img src="https://img.icons8.com/metro/100/000000/edit.png" width="10px" height="10px"></button>

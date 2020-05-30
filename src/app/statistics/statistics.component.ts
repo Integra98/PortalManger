@@ -25,9 +25,29 @@ export class StatisticsComponent implements OnInit {
   constructor(private projectService: ProjectService, private employeeService: EmployeeService,
     private apiService: ApiService) { }
 
+    ngOnInit() {
+      this.employees = this.employeeService.employees;
+      this.namesEmployees = this.employeeService.getNamesEmployees();
+      this.projects = this.projectService.projects;
+      this.projectsEmployees = this.employeeService.getProjectsEmployees();
+      // this.apiService.getEmployees()
+      // .subscribe( employees => {
+      //   this.employees = employees;
+      //   this.namesEmployees = this.employeeService.getNamesEmployees();
+      // });
+  
+      // this.apiService.getProjects()
+      // .subscribe( projects => {
+      //   this.projects = projects;
+      //   this.projectsEmployees = this.employeeService.getProjectsEmployees();
+      // });
+      this.getEmployeesProjects();
+      this.getChart();
+    }
+
 
   getChart() {
-
+    console.log(this.employeeService.namesEmployees);
     const barChartData = {
     labels: this.employeeService.namesEmployees,
     datasets: [{
@@ -66,20 +86,6 @@ export class StatisticsComponent implements OnInit {
   }
   }
 
-  ngOnInit() {
-    this.apiService.getEmployees()
-    .subscribe( employees => {
-      this.employees = employees;
-      this.namesEmployees = this.employeeService.getNamesEmployees();
-    });
 
-    this.apiService.getProjects()
-    .subscribe( projects => {
-      this.projects = projects;
-      this.projectsEmployees = this.employeeService.getProjectsEmployees();
-    });
-    this.getEmployeesProjects();
-    this.getChart();
-  }
 
 }

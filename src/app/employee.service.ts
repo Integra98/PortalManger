@@ -14,7 +14,14 @@ import {MessagesService} from './messages.service';
 export class EmployeeService {
   selEmployee: Employee;
   selEmpId;
-  employees: Employee[];
+  employees: Employee[] = [
+    { _id: '1', first_name: 'FirstName1', last_name: 'LastName1', DateOfBirth: '01-01-1998', Position: 'programmer', Email: '123@gmail.com', Phone: 87076543454, Photo: 'https://www.firestock.ru/download/s/1mgs931an63rxrj/11087.jpg?dl=0', Projects: []},
+    { _id: '2', first_name: 'FirstName2', last_name: 'LastName2', DateOfBirth: '01-01-1998', Position: 'programmer', Email: '123@gmail.com', Phone: 87076543454, Photo: 'https://sfera-info.com/wp-content/uploads/2019/03/453afbaa8b7f9dfa76f67cbaa84d4043_fitted_740x0.jpg', Projects: []},
+    { _id: '3', first_name: 'FirstName3', last_name: 'LastName3', DateOfBirth: '01-01-1998', Position: 'programmer', Email: '123@gmail.com', Phone: 87076543454, Photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrpY6C9fVhS1ro_WrCLQx3fDUuHJpaiw0oxkHtmTz9ThyR_bHQ&s', Projects: []},
+    { _id: '4', first_name: 'FirstName4', last_name: 'LastName4', DateOfBirth: '01-01-1998', Position: 'programmer', Email: '123@gmail.com', Phone: 87076543454, Photo: 'https://lamcdn.net/lookatme.ru/post_image-image/9wKriEVJcwuYpdujRQzAKg-article.jpg', Projects: []},
+
+    
+  ];
   namesEmployees: String[] = [];
   projectsEmployees: Number[] = [];
 

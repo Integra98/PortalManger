@@ -26,6 +26,14 @@ export class EditProjectComponent implements OnInit {
   constructor(private apiService: ApiService, private projectService: ProjectService,
     private employeeService: EmployeeService, private location: Location) { }
 
+    ngOnInit() {
+      this.selProject = this.projectService.getSelectedProject();
+      this.employees = this.employeeService.employees;
+  
+      // this.employeeService.getEmployees()
+      // .subscribe( employees => this.employees = employees);
+    }
+
   newTask(TaskName, TaskResponsible, defenition) {
     const newtask = {
       taskName: TaskName,
@@ -69,11 +77,13 @@ export class EditProjectComponent implements OnInit {
       tasks: this.selProject.tasks
     };
 
-    this.projectService.updateProject(newProject)
-    .subscribe(result => {
-      console.log('Project to be updated:' + result);
-      this.apiService.getProjects();
-    });
+    // this.projectService.updateProject(newProject)
+    // .subscribe(result => {
+    //   console.log('Project to be updated:' + result);
+    //   this.apiService.getProjects();
+    // });
+    let changedProject = this.projectService.projects.find(x => x._id === this.selProject._id);
+    changedProject = newProject;
 
     this.goBack();
   }
@@ -93,11 +103,6 @@ export class EditProjectComponent implements OnInit {
     this.location.back();
   }
 
-  ngOnInit() {
-    this.selProject = this.projectService.getSelectedProject();
 
-    this.employeeService.getEmployees()
-    .subscribe( employees => this.employees = employees);
-  }
 
 }

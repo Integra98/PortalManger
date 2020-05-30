@@ -25,6 +25,19 @@ export class EmployeesComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private apiService: ApiService,
     private messagesService: MessagesService, private projectService: ProjectService) { }
 
+    ngOnInit() {
+      this.employees = this.employeeService.employees;
+      this.projects = this.projectService.projects;
+      // this.apiService.getEmployees()
+      // .subscribe( employees => this.employees = employees);
+  
+      // this.apiService.getProjects()
+      // .subscribe( projects => this.projects = projects);
+  
+      this.getSelEmployee();
+      this.getEmployeesProjects();
+    }
+
   getSelEmployee(): void {
     this.selEmployee = this.employeeService.getSelectedEmployee();
   }
@@ -61,15 +74,6 @@ export class EmployeesComponent implements OnInit {
   }
   }
 
-  ngOnInit() {
-    this.apiService.getEmployees()
-    .subscribe( employees => this.employees = employees);
 
-    this.apiService.getProjects()
-    .subscribe( projects => this.projects = projects);
-
-    this.getSelEmployee();
-    this.getEmployeesProjects();
-  }
 
 }

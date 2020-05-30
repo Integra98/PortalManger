@@ -104,10 +104,10 @@ export class AddProjectComponent implements OnInit {
     this.employeeService.getEmployees()
     .subscribe( employees => this.employees = employees);
 
-    this.projectService.getProjects()
-    .subscribe(projects =>
-      this.projects = projects
-      );
+    // this.projectService.getProjects()
+    // .subscribe(projects =>
+    //   this.projects = projects
+    //   );
 
 
   }

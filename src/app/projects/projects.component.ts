@@ -21,6 +21,14 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectService: ProjectService, private apiService: ApiService,
     private messagesService: MessagesService) {}
 
+    ngOnInit() {
+      this.projects = this.projectService.projects; 
+      // .subscribe( projects => {
+      //   this.projects = projects;
+      //   });
+      this.getSelProject();
+    }
+
 
   onSelect(project: Project) {
     this.projectService.setSelectedProject(project);
@@ -60,15 +68,7 @@ export class ProjectsComponent implements OnInit {
 
 
 
-  ngOnInit() {
-    this.apiService.getProjects()
-    .subscribe( projects => {
-      this.projects = projects;
-      });
-    this.getSelProject();
 
-
-  }
 
 
 }

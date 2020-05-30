@@ -24,8 +24,15 @@ export class InfoEmployeeComponent implements OnInit {
     private projectService: ProjectService, private location: Location, private apiService: ApiService) { }
 
 
+    ngOnInit() {
+      this.getSelEmployee();
+      this.getEmployeesProjects();
+  
+    }
+
   getSelEmployee(): void {
     this.selEmployee = this.employeeService.getSelectedEmployee();
+    // debugger;
     if (this.employeeService.getSelectedEmployee().Photo === undefined) {
       this.selEmployee.Photo = this.Photo;
     }
@@ -91,10 +98,6 @@ export class InfoEmployeeComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-    this.getSelEmployee();
-    this.getEmployeesProjects();
 
-  }
 
 }
