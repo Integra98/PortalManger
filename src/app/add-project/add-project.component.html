@@ -1,0 +1,68 @@
+<div class ="container" style="padding:50px;">
+  <button type="button" class="btn btn-outline-primary" (click)="goBack()">Назад</button>
+
+    <h2 class ="page-header">Добавить проект</h2>
+    <form>
+      <div class = "form-group">
+        <label>Название</label>
+        <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" class ="form-control">
+        <label>Дата начала</label>
+        <input [(ngModel)]="SDate" [ngModelOptions]="{standalone: true}" type="date" class ="form-control">
+        <label>Крайний срок</label>
+        <input [(ngModel)]="deadline" [ngModelOptions]="{standalone: true}" type="date" class ="form-control">
+        <label>Ответственный сотрудник</label>
+          <select [(ngModel)]="responsible" [ngModelOptions]="{standalone: true}" class="form-control">
+              <option *ngFor = "let employee of employees" [ngValue] = "employee">{{employee.first_name}} {{employee.last_name}}</option>
+            </select>
+      </div>
+    </form>
+    <button type="button" class="btn btn-outline-success"  (click)="addProject(name, responsible, deadline)">Добавить проект</button>
+
+    <form >
+      <hr> 
+      <h3>Задачи <button type="button" class="btn btn-outline-warning" (click)="addTask = true">+</button></h3>
+      <form class="row">
+      <div *ngIf="addTask" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+          <div class="card-header">Новая задача</div>
+          <div class="card-body">
+              <div class = "form-group">
+                  <label>Название</label>
+                  <input [(ngModel)]="TaskName" [ngModelOptions]="{standalone: true}" class ="form-control">
+                  <label>Ответственный сотрудник</label>
+                    <select [(ngModel)]="TaskResponsible" [ngModelOptions]="{standalone: true}" class="form-control">
+                        <option *ngFor = "let employee of employees" [ngValue] = "employee">{{employee.first_name}} {{employee.last_name}}</option>
+                      </select>
+                      <label>Описание</label>
+                  <input [(ngModel)]="defenition" [ngModelOptions]="{standalone: true}" class ="form-control">
+                </div>
+                <button type="button" class="btn btn-outline-success" (click)="newTask(TaskName,TaskResponsible,defenition)">ОК</button>
+          </div>
+        </div>
+
+        <table class="table table-hover col-md-6" style="margin-left: 20px;">
+            <tr *ngFor = "let task of tasks" >
+                <th scope="row" >{{task.taskName}}  <button class="btn btn-outline-info" (click)="setSelTask(task)"><img src="https://img.icons8.com/metro/100/000000/edit.png" width="10px" height="10px"></button>
+                  <button class="btn btn-outline-danger" (click) = "deleteTask(task)"><img src="https://img.icons8.com/ios/100/000000/delete-sign-filled.png" width="10px" height="10px"></button></th>
+              </tr>
+          </table>
+
+          <div *ngIf="selTask" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+            <div class="card-header">Изменить задачу</div>
+            <div class="card-body">
+                <div class = "form-group">
+                    <label>Название</label>
+                    <input [(ngModel)]="selTask.taskName" [ngModelOptions]="{standalone: true}" class ="form-control">
+                    <label>Ответственный сотрудник</label>
+                      <select [(ngModel)]="selTask.responsible" [ngModelOptions]="{standalone: true}" class="form-control">
+                          <option *ngFor = "let employee of employees" [ngValue] = "employee">{{employee.first_name}} {{employee.last_name}}</option>
+                        </select>
+                        <label>Описание</label>
+                    <input [(ngModel)]="selTask.defenition" [ngModelOptions]="{standalone: true}" class ="form-control">
+                  </div>
+                  <button type="button" (click)="selTask=undefined" class="btn btn-outline-success">ОК</button>
+            </div>
+          </div>
+        </form>
+        
+  </form>
+  </div>

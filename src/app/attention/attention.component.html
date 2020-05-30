@@ -1,0 +1,5 @@
+
+<div *ngFor='let message of stopList' class="alert alert-dismissible alert-danger" >
+  <button type="button" class="close" data-dismiss="alert" (click) ="deleteDeadline(message)">&times;</button>
+  <h5 style="font-size:12px;" class="mb-0">Сегодня крайний срок сдачи проекта: {{message}}</h5>
+</div>

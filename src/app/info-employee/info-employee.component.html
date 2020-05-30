@@ -1,0 +1,48 @@
+<div class ="container" style="padding:30px;">
+  <button type="button" class="btn btn-outline-primary" (click)="goBack()">Назад</button>
+
+  <h2 class ="page-header">{{selEmployee.first_name}} {{selEmployee.last_name}}
+      <button routerLink="/edit-employee" class="btn btn-outline-info">Изменить <img src="https://img.icons8.com/metro/100/000000/edit.png" width="10px" height="10px"></button>
+      <button class="btn btn-outline-danger" (click) = "deleteEmployee(employee._id)">Удалить <img src="https://img.icons8.com/ios/100/000000/delete-sign-filled.png" width="10px" height="10px"></button>
+     </h2>
+<form width class="col-md-12 row">
+    <div class="card border-secondary mb-3" style="max-width: 20rem; padding:5px;">
+        <div class="card-body" style="padding:5px;">
+          <img src= {{selEmployee.Photo}}  width="160px" height="190px">
+        </div>
+      </div>
+
+
+      <div>
+  <table class="table table-hover" style ="margin-left: 10px;">
+     <thead>
+  <tr>
+    <td>Дата рождения:</td><td> {{selEmployee.DateOfBirth}}</td>
+  </tr>
+  <tr>
+    <td>Должность:</td><td> {{selEmployee.Position}}</td>
+  </tr>
+  <tr>
+    <td>E-mail:</td><td> {{selEmployee.Email}}</td>
+  </tr>
+  <tr>
+    <td>Номер телефона:</td><td> {{selEmployee.Phone}}</td>
+  </tr>
+</thead>
+</table>
+</div>
+</form>
+
+<div class="card border-secondary mb-4" style="width: 50rem;">
+  <div class="card-header">Список проектов:</div>
+  <div class="card-body">
+      <table class="table table-hover col-md-12" style="margin-left: 10px;">
+        <tr><th>Название</th><th>Статус</th></tr>
+          <tr *ngFor = "let project of selEmployee.Projects" [ngClass]= "(project.status=='Выполнено')?'text-success':''" (click)="onSelectProject(project)" routerLink="/info-project" >
+              <td scope="row" >{{project.name}}</td>
+              <td>{{project.status}}</td>
+            </tr>
+        </table>
+  </div>
+</div>
+</div>

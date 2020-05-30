@@ -1,0 +1,101 @@
+<div class ="col-md-14 container" style="padding:30px; padding-left:50px;">
+  <button type="button" class="btn btn-outline-primary" (click)="goBack()">Назад</button>
+  <h2 class ="page-header">{{selProject.name}} 
+      <button routerLink="/edit-project" class="btn btn-outline-info">Изменить <img src="https://img.icons8.com/metro/100/000000/edit.png" width="10px" height="10px"></button>
+      <button class="btn btn-outline-danger" (click) = "deleteProject(project._id)">Удалить <img src="https://img.icons8.com/ios/100/000000/delete-sign-filled.png" width="10px" height="10px"></button>
+     </h2>
+<form width class=" row">
+ <div>
+    <div class="card border-secondary mb-3" style="width: 350px;">
+        <div class="card-header">Описание</div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+             <tr>
+               <td>Дата начала:</td><td> {{selProject.startDate}}</td>
+             </tr>
+             <tr>
+               <td>Крайний срок:</td><td> {{selProject.deadline}}</td>
+             </tr>
+           </thead>
+           </table>
+        </div>
+      </div>
+
+      <div *ngIf = "selProject.status === 'Выполнено'" class="card text-white bg-success mb-3" style="width: 350px; max-height: 10rem; margin-top:0;">
+        <div class="card-header">Статус проекта</div>    
+      <div class="card-body">
+            <h4 class="card-title">{{selProject.status}}</h4>
+            <p class="card-text">Дата завершения: {{selProject.endDate}}</p>
+          </div>
+          </div>
+  
+      
+      <div *ngIf = "selProject.status === 'Выполняется'" class="card text-white bg-primary mb-3" style="max-width: 30rem; max-height: 10rem; margin-top:0; ">  
+        <div class="card-header">Статус</div>
+          <div class="card-body">
+              <h4 class="card-title">{{selProject.status}}</h4>
+              <div class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card border-secondary mb-5" style="max-width: 20rem; margin-left: 15px">
+          <div class="card-header">Ответственный сотрудник</div>
+          <div class="card-body" style="text-align: center;">
+              <img src= {{Photo}} width="160px" height="190px">
+            <h4 class="card-title"><a routerLink="/info-employee" (click)="onSelect(selProject.responsible)">{{selProject.responsible.first_name}} {{selProject.responsible.last_name}}</a> </h4>
+            <p class="card-text">{{selProject.responsible.Position}}</p>
+          </div>
+        </div>
+
+        <div class="card border-secondary mb-5" style="max-width: 40rem; margin-left: 15px">
+          <div class="card-header">Диаграмма</div>
+          <div class="card-body" style="text-align: center; width:420px; padding: 0%;">
+             <canvas #myCanvas>{{ chart }}</canvas> 
+             <br>
+            <h4 class="card-text">Прогресс выполнения проекта</h4>
+          </div>
+        </div>
+    
+        
+
+  
+</form>
+
+<form width class=" row">
+  <div class="card border-secondary mb-4" style="width: 22rem;">
+      <div class="card-header">Список задач:</div>
+      <div class="card-body">
+          <table class="table table-hover col-md-12" style="margin-left: 10px;">
+            <tr><th>Название</th><th>Статус</th></tr>
+              <tr *ngFor = "let task of selProject.tasks" [ngClass]= "(task.status=='Выполнено')?'text-success':''" (click)="getSelTask(task)">
+                  <td scope="row" >{{task.taskName}}</td>
+                  <td>{{task.status}}</td>
+                </tr>
+            </table>
+      </div>
+    </div>
+
+  
+  
+<div *ngIf="selTask" class="row">
+<div  class="card text-white bg-info mb-3" style="max-width: 20rem; max-height: 20rem; margin-left: 30px;">
+    <div class="card-header">Описание задачи</div>
+    <div class="card-body" >
+      <h5 class="card-title text-dark">{{selTask.defenition}}</h5>
+      <p class="card-text">Дата постановки задачи: {{selTask.startDate}}</p>
+      <p class="card-text">Дата завершения задачи: {{selTask.endDate}}</p>
+    </div>
+  </div>
+  <div class="card text-white bg-primary mb-2" style="max-width: 20rem; max-height: 10rem; margin-left: 15px;" *ngIf="selTask">
+      <div class="card-body">
+        <h4 class="card-title">Статус: <button type="button" [ngClass]= "(selTask.status=='Выполняется')?'btn btn-secondary':'btn btn-success'" (click)="toggleStatus()">{{selTask.status}}</button></h4>
+        <h5 class="card-title">Ответственный: <a routerLink="/info-employee" (click)="onSelect(selTask.responsible)" href="">{{selTask.responsible.first_name}} {{selTask.responsible.last_name}}</a></h5>
+      </div>
+  </div>
+</div>
+</form>
+</div>

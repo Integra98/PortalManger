@@ -1,0 +1,63 @@
+<div class ="container" style="padding:30px;">
+<h2>Живая лента <button type="button" class="btn btn-outline-secondary" (click)="messagesService.clear()">Очистить ленту</button></h2>
+
+<div *ngFor='let message of messagesService.deadlineMessages' class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert" (click) ="messagesService.deleteDeadline(message)">&times;</button>
+  <h4 class="alert-heading">Внимание!</h4>
+  <h5 class="mb-0">{{message}}</h5>
+  <p>{{messagesService.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+</div>
+
+  <div *ngFor='let message of messagesService.addMessages'  class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert" (click) ="messagesService.deleteAdd(message)">&times;</button>
+    <h4 class="alert-heading">Создан новый проект</h4>
+    <h5 class="mb-0">{{message}}</h5>
+    <p>{{date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+  </div>
+
+  <div *ngFor='let message of messagesService.addEmployee'  class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert" (click) ="messagesService.deleteAddEmployee(message)">&times;</button>
+    <h4 class="alert-heading">Добавлен новый сотрудник</h4>
+    <h5 class="mb-0">{{message}}</h5>
+    <p>{{messagesService.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+  </div>
+
+  <div *ngFor='let message of messagesService.deleteMessages'  class="alert alert-dismissible alert-primary">
+    <button type="button" class="close" data-dismiss="alert" (click) ="messagesService.deleteDelete(message)">&times;</button>
+    <h4 class="alert-heading">Удален проект</h4>
+    <h5 class="mb-0">{{message}}</h5>
+    <p>{{messagesService.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+  </div>
+
+  <div *ngFor='let message of messagesService.deleteEmployee'  class="alert alert-dismissible alert-primary">
+    <button type="button" class="close" data-dismiss="alert" (click) ="messagesService.deleteDeleteEmployee(message)">&times;</button>
+    <h4 class="alert-heading">Удален сотрудник</h4>
+    <h5 class="mb-0">{{message}}</h5>
+    <p>{{messagesService.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+  </div>
+
+  <div *ngFor='let message of messagesService.updateMessages'  class="alert alert-dismissible alert-info">
+    <button type="button" class="close" data-dismiss="alert" (click) ="messagesService.deleteUpdate(message)">&times;</button>
+    <h4 class="alert-heading">Изменен проект</h4>
+    <h5 class="mb-0">{{message}}</h5>
+    <p>{{messagesService.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+  </div>
+
+  <div *ngFor='let message of messagesService.updateEmployee'  class="alert alert-dismissible alert-info">
+    <button type="button" class="close" data-dismiss="alert" (click) ="messagesService.deleteUpdateEmployee(message)">&times;</button>
+    <h4 class="alert-heading">Изменены данные сотрудника</h4>
+    <h5 class="mb-0">{{message}}</h5>
+    <p>{{messagesService.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+  </div>
+
+  <div *ngFor='let message of messagesService.doneMessages' class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert" (click) ="messagesService.deleteDone(message)">&times;</button>
+    <h4 class="alert-heading">Выполнен проект</h4>
+    <h5 class="mb-0">{{message}}</h5>
+    <p>{{messagesService.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+  </div>
+
+  
+
+
+</div>

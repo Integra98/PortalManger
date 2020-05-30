@@ -1,0 +1,29 @@
+
+<div class ="col-md-14 container" style="padding:30px; padding-left:50px;">
+<h2 class ="page-header">Проекты
+<button routerLink="/add-project" type="button" class="btn btn-outline-warning" style="margin-left: 600px;">Добавить новый проект</button>
+</h2>
+</div>
+<div class = 'container'>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Название</th>
+            <th scope="col">Статус</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let project of projects" [ngClass]= "(project.status=='Выполнено')?'text-success':''">
+                <th  (click)="onSelect(project)" routerLink="/info-project" scope="row">{{project.name}}</th>
+                <td>{{project.status}}</td>
+                <td ><button class="btn btn-outline-info" routerLink="/edit-project" (click)="onSelect(project)">Изменить <img src="https://img.icons8.com/metro/100/000000/edit.png" width="10px" height="10px"></button>
+                  <button class="btn btn-outline-danger" (click) = "deleteProject(project._id)">Удалить <img src="https://img.icons8.com/ios/100/000000/delete-sign-filled.png" width="10px" height="10px"></button>
+                 </td>
+              </tr>
+          </tbody>
+    </table>
+  
+</div>

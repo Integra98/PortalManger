@@ -1,0 +1,32 @@
+
+<div class ="container" style="padding:30px;">
+    <h2 class ="page-header">Сотрудники
+    <button routerLink="/add-employee" type="button" class="btn btn-outline-warning" style="margin-left: 400px;">Добавить сотрудника</button>
+    <button routerLink="/statistics" type="button" class="btn btn-outline-light" style="margin-left: 10px;">Статистика</button>
+    </h2>
+    </div>
+    <div class = 'container'>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Имя</th>
+                <th scope="col">Должность</th>
+                <th scope="col"></th>
+               
+
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let employee of employees" >
+                    <th (click)="onSelect(employee)" routerLink="/info-employee" scope="row">{{employee.first_name}} {{employee.last_name}}</th>
+                    <td>{{employee.Position}}</td>
+                   <td ><button routerLink="/edit-employee" (click)="onSelect(employee)" class="btn btn-outline-info">Изменить <img src="https://img.icons8.com/metro/100/000000/edit.png" width="10px" height="10px"></button>
+                    <button class="btn btn-outline-danger" (click) = "deleteEmployee(employee._id)">Удалить <img src="https://img.icons8.com/ios/100/000000/delete-sign-filled.png" width="10px" height="10px"></button>
+                   </td>
+
+                  </tr>
+              </tbody>
+        </table>
+      
+    </div>
+    

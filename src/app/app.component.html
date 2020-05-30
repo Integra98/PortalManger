@@ -1,0 +1,34 @@
+
+  <nav class="navbar navbar-fixed-top bg-primary">
+      <span routerLink="/homepage" class="navbar-brand mb-0 h1">Project Manager</span>
+    </nav>
+    
+
+<div class="sidebar-fixed position-fixed">
+<a href="" class="logo-wrapper waves-effect">
+  <img src="https://img.icons8.com/nolan/512/000000/picasa.png" width="200" height="200" class="img-fluid">
+</a>
+<div class="list-group list-group-flush">
+    
+<a routerLink="/projects" href="" class = "list-group-item waves-effect">
+    <img src="https://img.icons8.com/office/40/000000/sorting-answers.png" width="20" height="20" ><span style='padding-left:10px;'> </span>Проекты
+</a> 
+<a routerLink="/employees" href="" class = "list-group-item waves-effect">
+    <img src="https://img.icons8.com/office/40/000000/queue.png" width="20" height="20"><span style='padding-left:10px;'> </span>Сотрудники
+  </a> 
+  <a routerLink="/" href="" class = "list-group-item waves-effect ">
+    <img src="https://img.icons8.com/flat_round/100/000000/bell.png" width="20" height="20" ><span style='padding-left:10px;'> </span>Живая лента
+     </a> 
+  
+ </div> 
+
+<div style="width: 188px; height: 200px; margin-top:20px;" >
+  <app-attention></app-attention> 
+</div>
+
+ </div>
+
+ <div style="height: 570px; width:100%; padding-left: 185px; padding-top: 53px; margin: 0;">
+  <router-outlet></router-outlet>
+</div>
+ 

@@ -1,0 +1,37 @@
+<div class ="container" style="padding:30px;">
+  <h2 class ="page-header">Добавить сотрудника </h2>
+<form width class="col-md-6">
+  <fieldset>
+    <div class="form-group">
+      <label >Фамилия</label>
+      <input [(ngModel)]="first_name" [ngModelOptions]="{standalone: true}"  class="form-control">
+    </div>
+    <div class="form-group">
+      <label >Имя</label>
+      <input [(ngModel)]="last_name" [ngModelOptions]="{standalone: true}"  class="form-control">
+    </div>
+    <div class="form-group">
+      <label >Дата рождения</label>
+      <input type="date" [(ngModel)]="DateOfBirth" [ngModelOptions]="{standalone: true}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label >Должность</label>
+      <input [(ngModel)]="Position" [ngModelOptions]="{standalone: true}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label >E-mail</label>
+      <input [(ngModel)]="Email" [ngModelOptions]="{standalone: true}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label >Номер телефона</label>
+      <input [(ngModel)]="Phone" [ngModelOptions]="{standalone: true}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label >Фото (URL)</label>
+        <input [(ngModel)]="Photo" [ngModelOptions]="{standalone: true}" class="form-control">
+      </div>
+  </fieldset>
+</form>
+<button type="button" class="btn btn-outline-success" (click)="addEmployee(first_name, last_name, DateOfBirth, Position, Email, Phone, Photo)">Добавить сотрудника</button>
+
+</div>
